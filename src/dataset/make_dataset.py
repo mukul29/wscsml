@@ -16,7 +16,8 @@ def make_dataset(interim_file_path, processed_file_path, weights):
     :return: None
     """
     qws_wsrf, qws_complete_numpy_array = compute_wsrf.compute_wsrf(interim_file_path, weights)
-    # qws_complete_numpy_array_temp = np.append(qws_complete_numpy_array, qws_wsrf, axis=1)
+    # qws_complete_numpy_array_temp = np.append(qws_complete_numpy_array, qws_wsrf[:, np.newaxis], axis=1)
+
 
 
 if __name__ == "__main__":
