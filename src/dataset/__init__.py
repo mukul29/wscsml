@@ -1,1 +1,1 @@
-__all__ = ['compute_wsrf.py', 'make_dataset', 'paths', 'preprocess_raw_data']
+__all__ = ['compute_wsrf', 'make_dataset', 'paths', 'preprocess_raw_data']
