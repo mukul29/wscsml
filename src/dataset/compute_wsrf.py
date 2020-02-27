@@ -14,11 +14,11 @@ def compute_wsrf(file_path, weights):
         floating point numbers representing weights of each attribute which add up to 1.0
     :param file_path: str
         string containing the path of the interim
-    :return: A 1D numpy array containing WsRF scores (between 0 and 1) of each web service
+    :return: tuple with complete numpy array and a numpy array containing WsRF scores (between 0 and 1) of each web service
     """
     ######################################################################################
     # Treat as constants
-    # For attributes where lower is better, this value is set to -1
+    # For attributes where lower is better, this value is set to 1
     CORRECTION_MATRIX = np.array([1, 0, 0, 0, 0, 0, 0, 1, 0], dtype='float32')
     ATTRIBUTES = ["Response Time",
                   "Availability",
@@ -32,21 +32,21 @@ def compute_wsrf(file_path, weights):
     ######################################################################################
 
     # Make a dataframe from the csv file, convert it to a 2-D numpy array
-    qws1_complete_dataframe = pd.read_csv(file_path, header=None)
-    qws1_complete_numpy_array = qws1_complete_dataframe.to_numpy()
+    qws_complete_dataframe = pd.read_csv(file_path, header=None)
+    qws_complete_numpy_array = qws_complete_dataframe.to_numpy()
     # slice the array to get just the attributes and set dtype to float32
-    qws1_attributes_numpy_array = qws1_complete_numpy_array[:, 0:9].astype('float32')
+    qws_attributes_numpy_array = qws_complete_numpy_array[:, 0:9].astype('float32')
 
     # scale the data to a range of [0, 1] using MinMaxScaler
     scaler = sklearn.preprocessing.MinMaxScaler()
-    scaler.fit(qws1_attributes_numpy_array)
-    qws1_normalized_attributes = np.absolute(CORRECTION_MATRIX - scaler.transform(qws1_attributes_numpy_array))
+    scaler.fit(qws_attributes_numpy_array)
+    qws_normalized_attributes = np.absolute(CORRECTION_MATRIX - scaler.transform(qws_attributes_numpy_array))
 
     # form a numpy array of the external weights
     external_weights = np.array(weights, dtype='float32')
-    qws1_weighted_attributes = qws1_normalized_attributes * external_weights[:, None].T
-    calculated_wsrf = qws1_weighted_attributes.sum(axis=1)
-    return calculated_wsrf
+    qws_weighted_attributes = qws_normalized_attributes * external_weights[:, None].T
+    calculated_wsrf = qws_weighted_attributes.sum(axis=1)
+    return (calculated_wsrf, qws_complete_numpy_array)
 
 
 if __name__ == "__main__":
