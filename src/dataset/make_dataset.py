@@ -48,7 +48,15 @@ def make_dataset(interim_file_path, processed_file_path, weights, version):
 
 
 if __name__ == "__main__":
-    weights = [0.20, 0.17, 0.18, 0.10, 0.10, 0.10, 0.00, 0.05, 0.10]
+    weights = [0.20, 0.17, 0.11, 0.08, 0.10, 0.13, 0.00, 0.11, 0.10]
+
+    print(np.sum(weights))
+
     interim_file_path = os.path.join(paths.interim_data_dir, "qws1_interim.csv")
     processed_file_path = os.path.join(paths.processed_data_dir, "qws1_processed.csv")
     make_dataset(interim_file_path, processed_file_path, weights, 1)
+
+    # weights = [0.20, 0.17, 0.18, 0.10, 0.10, 0.10, 0.00, 0.05, 0.10]
+    interim_file_path = os.path.join(paths.interim_data_dir, "qws2_interim.csv")
+    processed_file_path = os.path.join(paths.processed_data_dir, "qws2_processed.csv")
+    make_dataset(interim_file_path, processed_file_path, weights, 2)
