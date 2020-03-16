@@ -1,9 +1,7 @@
 import os.path
 
 # Main project directory
-here = os.path.dirname(__file__)
-source_dir = os.path.dirname(here)
-project_dir = os.path.abspath(os.path.join(source_dir, os.pardir))
+project_dir = os.path.dirname(__file__)
 
 # Raw data directory, data in this directory is treated as immutable
 raw_data_dir = os.path.join(project_dir, 'data', 'raw')
