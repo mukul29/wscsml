@@ -1,6 +1,6 @@
 import paths
 import os.path
-import compute_wsrf
+import src.dataset.compute_wsrf
 import numpy as np
 import pandas as pd
 
@@ -18,7 +18,7 @@ def make_dataset(interim_file_path, processed_file_path, weights, version):
         integer (1 or 2) for qws version 1 or 2 respectively
     :return: None
     """
-    qws_wsrf, qws_complete_numpy_array = compute_wsrf.compute_wsrf(interim_file_path, weights)
+    qws_wsrf, qws_complete_numpy_array = src.dataset.compute_wsrf.compute_wsrf(interim_file_path, weights)
     # qws_complete_numpy_array_temp = np.append(qws_complete_numpy_array, qws_wsrf[:, np.newaxis], axis=1)
     qws_wsrf_level = np.array([])
     for score in qws_wsrf:
