@@ -17,7 +17,7 @@ def make_nn_model(processed_file_path):
 
     X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.4)
 
-    nn_classifier = sklearn.neural_network.MLPClassifier(max_iter=2000)
+    nn_classifier = sklearn.neural_network.MLPClassifier(hidden_layer_sizes=(8, 8, 8, 8, 8, 8, 8, 8), max_iter=200)
     nn_classifier.fit(X_train, y_train)
 
     result = nn_classifier.predict((X_test))
