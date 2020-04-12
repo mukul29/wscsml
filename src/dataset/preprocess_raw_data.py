@@ -26,16 +26,16 @@ def preprocess_raw_data(qws_raw_file, qws_interim_file):
 
 if __name__ == "__main__":
     # open both files for qws1 dataset (raw for reading and interim for writing
-    qws1_raw_file = open(os.path.join(paths.raw_data_dir, "qws1.txt"), "r")
-    qws1_interim_file = open(os.path.join(paths.interim_data_dir, "qws1_interim.csv"), "w")
+    qws1_raw_file = open(os.path.join(paths.RAW_DATA_DIR, "qws1.txt"), "r")
+    qws1_interim_file = open(os.path.join(paths.INTERIM_DATA_DIR, "qws1_interim.csv"), "w")
     preprocess_raw_data(qws1_raw_file, qws1_interim_file)
     # close both files
     qws1_raw_file.close()
     qws1_interim_file.close()
 
     # open both files for qws2 dataset (raw for reading and interim for writing
-    qws2_raw_file = open(os.path.join(paths.raw_data_dir, "qws2.txt"), "r")
-    qws2_interim_file = open(os.path.join(paths.interim_data_dir, "qws2_interim.csv"), "w")
+    qws2_raw_file = open(os.path.join(paths.RAW_DATA_DIR, "qws2.txt"), "r")
+    qws2_interim_file = open(os.path.join(paths.INTERIM_DATA_DIR, "qws2_interim.csv"), "w")
     preprocess_raw_data(qws2_raw_file, qws2_interim_file)
     # close both files
     qws2_raw_file.close()

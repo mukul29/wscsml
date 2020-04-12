@@ -22,11 +22,11 @@ def make_dataset(interim_file_path, processed_file_path, weights, version):
     # qws_complete_numpy_array_temp = np.append(qws_complete_numpy_array, qws_wsrf[:, np.newaxis], axis=1)
     qws_wsrf_level = np.array([])
     for score in qws_wsrf:
-        if(score > 0.8):
+        if(score > 0.78):
             level = 1
         elif(score > 0.7):
             level = 2
-        elif(score > 0.6):
+        elif(score > 0.65):
             level = 3
         else:
             level = 4
@@ -52,11 +52,11 @@ if __name__ == "__main__":
 
     print(np.sum(weights))
 
-    interim_file_path = os.path.join(paths.interim_data_dir, "qws1_interim.csv")
-    processed_file_path = os.path.join(paths.processed_data_dir, "qws1_processed.csv")
+    interim_file_path = os.path.join(paths.INTERIM_DATA_DIR, "qws1_interim.csv")
+    processed_file_path = os.path.join(paths.PROCESSED_DATA_DIR, "qws1_processed.csv")
     make_dataset(interim_file_path, processed_file_path, weights, 1)
 
     # weights = [0.20, 0.17, 0.18, 0.10, 0.10, 0.10, 0.00, 0.05, 0.10]
-    interim_file_path = os.path.join(paths.interim_data_dir, "qws2_interim.csv")
-    processed_file_path = os.path.join(paths.processed_data_dir, "qws2_processed.csv")
+    interim_file_path = os.path.join(paths.INTERIM_DATA_DIR, "qws2_interim.csv")
+    processed_file_path = os.path.join(paths.PROCESSED_DATA_DIR, "qws2_processed.csv")
     make_dataset(interim_file_path, processed_file_path, weights, 2)

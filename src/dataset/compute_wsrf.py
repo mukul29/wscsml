@@ -51,5 +51,5 @@ def compute_wsrf(file_path, weights):
 
 if __name__ == "__main__":
     weights = [0.20, 0.17, 0.18, 0.10, 0.10, 0.10, 0.00, 0.05, 0.10]
-    file_path = os.path.join(paths.interim_data_dir, "qws1_interim.csv")
+    file_path = os.path.join(paths.INTERIM_DATA_DIR, "qws1_interim.csv")
     compute_wsrf(file_path, weights)
