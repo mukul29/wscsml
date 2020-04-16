@@ -4,7 +4,6 @@ import pandas as pd
 import sklearn.model_selection
 import paths
 import os.path
-import matplotlib.pyplot as plt
 
 
 def get_X_y(processed_file_path):
@@ -39,8 +38,4 @@ def min_max_scaled_data(processed_file_path, split):
 if __name__ == "__main__":
     X_train, y_train, X_test, y_test = min_max_scaled_data(os.path.join(paths.PROCESSED_DATA_DIR, "qws1_processed.csv"),
                                                            split=0.4)
-    print(X_train.mean(axis=0))
-    plt.plot(X_train)
-    plt.figure()
-    plt.plot(X_test)
-    plt.show()
+
