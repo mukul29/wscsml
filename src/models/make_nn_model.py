@@ -17,6 +17,7 @@ def make_nn_model(processed_file_path, split):
     result = nn_classifier.predict(X_test)
     print("Classification report for classifier %s:\n\n%s\n"
           % (nn_classifier, sklearn.metrics.classification_report(y_test, result)))
+    return result, y_test
 
 
 if __name__ == "__main__":

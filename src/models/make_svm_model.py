@@ -19,6 +19,7 @@ def make_svm_model(processed_file_path, split):
     result = svm_classifier.predict(X_test)
     print("Classification report for classifier %s:\n%s\n"
           % (svm_classifier, sklearn.metrics.classification_report(y_test, result)))
+    return result, y_test
 
 
 if __name__ == "__main__":
